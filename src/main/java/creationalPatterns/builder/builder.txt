@@ -1,0 +1,31 @@
+Builder Pattern
+Encapsulates or hides the process of building a complex object and separates the
+representation of the object and its construction
+
+informal def -> allows you to construct complex object step by step
+
+involves
+Director
+Builder(interface)
+concrete builder
+Client
+product (object)
+
+
+Implement a builder
+1. Identify the parts of the product & provide the methods to create those parts
+2. It should provide a method to "assemble" or build the product/object
+3. It must provide a method to get fully built object out
+
+A director can be separate class or client can play the role of director
+
+example
+we need to create UserWebDTO
+*) to create that product we are going to call UserWebDTO Builder(concrete builder)
+*) UserDTOBuilder is an interface that has simply defined the methods that correspond to
+each part of the user
+*) Client class acts as a director(psvm method)
+
+similar to user web dto, you can also create user rest dto using same UserDTOBuilder
+
+builder2 is the most common way of creating builder pattern
