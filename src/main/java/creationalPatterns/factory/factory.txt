@@ -1,0 +1,65 @@
+the factory method is defined as providing an interface for object creation but delegating
+the actual instantiation of objects to subclasses.
+
+factory method
+1. use it when you want to move the object creation logic from our code to a separate class
+2. we use this pattern when we don't know in advance which class we may need to instantiate beforehand
+and also allow new classes to be added to system and handle their creation without affecting client code
+3. subclasses decide which object to instantiate by overriding the factory method
+
+involves
+Product - The Product declares the interface, which is common to all objects that can be produced
+by the creator and its subclasses.
+concreteProductA, concreteProductB - Concrete Products are different implementations of the product interface.
+
+
+creator -
+1 The Creator class declares the factory method that returns new product objects.
+1.1. It’s important that the return type of this method matches the product interface.
+1.2. You can declare the factory method as abstract to force all subclasses to implement their own versions of the method.
+As an alternative, the base factory method can return some default product type.
+
+Note, despite its name, product creation is not the primary responsibility of the creator.
+Usually, the creator class already has some core business logic related to products.
+The factory method helps to decouple this logic from the concrete product classes.
+Here is an analogy: a large software development company can have a training department for programmers.
+However, the primary function of the company as a whole is still writing code, not producing programmers.
+
+concreteCreatorA, concreteCreatorB
+Concrete Creators override the base factory method so it returns a different type of product.
+
+Note that the factory method doesn't have to create new instances all the time.
+*It can also return existing objects from a cache, an object pool, or another source.*
+
+steps
+we start by creating a class for our creator
+creator itself can be concrete it can provide a default object or it can be abstract
+Implementation will override the method and return an object
+
+
+example
+1. Message<<abstract>> Product class
+1.1 TextMsg -> stores the message in text format
+1.2 JsonMsg -> you know
+
+2. MessageCreator<<abstract>>
+2.1 TextMsgCreator
+2.2 JsonMsgCreator
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+Simple factory is an IDIOM not a design pattern
+simple factory encapsulates away the object instantiation in a separate method
+example
+product -> we need object of this class and it's subclasses(productA and productB)
+simple factory -> provides a static method to get instance of the product
+client -> psvm class
+steps
+1We start by creating separate class for our simple factory
+1.1 add a method which returns desired object instance
+1.1.1 this method is typically static and receives some argument and decides which class to instantiate
+
