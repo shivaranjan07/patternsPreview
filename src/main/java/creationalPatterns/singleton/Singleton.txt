@@ -1,0 +1,35 @@
+Singleton
+Singleton pattern as the name suggests is used to create one and only instance of a class
+
+*) There are several examples where only a single instance of a class should exist and the constraint be enforced.
+ Caches, thread pools, registries are examples of objects that should only have a single instance.
+
+ Its trivial to new-up an object of a class but how do we ensure that only one object ever gets created?
+ The answer is to make the constructor private of the class we intend to define as singleton.
+ That way, only the members of the class can access the private constructor and no one else.
+
+ Formally the Singleton pattern is defined as ensuring that only a single instance of a class exists
+ and a global point of access to it exists.
+
+ UML consists,
+ Singleton<class> +getInstance() +operation1()
+ responsible for creating a single instance
+ provides a static method to get the instance
+
+ Implementation
+ controlling instance creation
+ class constructors must not be accessible globally
+ subclassing/inheritance must not be allowed
+
+ keeping track of instance in a class, give access to the single instance, A public static method is good choice
+ we can expose instance as final public static field but it won't work for all singleton implementations
+
+ 2 options for implementing a singleton
+ Eager/Early initialization
+    create a singleton as soon as class loaded
+
+ Lazy initialization
+    singleton is created when it is first required
+
+can also create singleton using ENUM
+
