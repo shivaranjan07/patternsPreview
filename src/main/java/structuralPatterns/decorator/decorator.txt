@@ -1,0 +1,38 @@
+motivation - how objects can be enhanced with new behavior using the decorator pattern?
+
+A decoration is added to something to make it more attractive, in the same spirit, the decorator pattern adds
+new functionality to objects without modifying their defining classes.
+
+The decorator pattern can be thought of as a wrapper or more formally a way to enhance or extend the behavior of an
+object dynamically. The pattern provides an alternative to subclassing when new functionality is desired.
+
+The strategy is to wrap the existing object within a decorator object that usually implements the same interface as
+the wrapped object. This allows the decorator to invoke the methods on the wrapped object and then add any
+additional behavior. Usually, the decorator adds behavior to the existing functionality of the wrapped object
+i.e. the decorator takes action either before or after invoking some method on the wrapped object.
+
+consists
+Component<Interface/abstract>
+Concrete Component implements or extends component
+Decorator <interface> or can be normal concrete class also...-> provides additional
+behavior and maintains reference to component +operation():void #addedbehavior():void since decorator contains reference
+to concrete component, upon calling operation() method decorator calls comp.operation
+Concrete Decorator -> if Decorator is an interface or abstract class then we need a concrete Decorator
+
+
+Implementation steps
+1. we start with our component.
+Component defines interface needed or already used by client.
+Concrete component implements the component.
+We define our decorator. Decorator implements component & also needs reference to concrete component
+In decorator methods we provide additional behavior on top that provided by concrete component instance
+
+2. Decorator can be abstract as well & depend on subclasses to provide the functionality
+
+example
+Message <Component> +getContent():String
+TextMessage <Concrete-Component> -msg +getContent():String
+Base64EncodedMsg <decorator> +getContent():String extends Component and contains the reference to concrete-component(composition)
+HTMLEncodedMsg <decorator> +getContent():String
+
+
